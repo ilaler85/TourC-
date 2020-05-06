@@ -1,0 +1,7 @@
+C:\Users\vasil\source\repos\Tour\obj\Debug\Tour.csprojAssemblyReference.cache
+C:\Users\vasil\source\repos\Tour\obj\Debug\Tour.csproj.CoreCompileInputs.cache
+C:\Users\vasil\source\repos\Tour\bin\Debug\Tour.exe.config
+C:\Users\vasil\source\repos\Tour\bin\Debug\Tour.exe
+C:\Users\vasil\source\repos\Tour\bin\Debug\Tour.pdb
+C:\Users\vasil\source\repos\Tour\obj\Debug\Tour.exe
+C:\Users\vasil\source\repos\Tour\obj\Debug\Tour.pdb
