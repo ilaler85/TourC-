@@ -16,16 +16,6 @@ namespace Tour
         public DateTime Return_Date { get; set; }
         public Double Price { get; set; }
 
-        public Tour_Info(string country, string city, string hotel, int dday, int dmonth, int dyear, int rday, int rmonth, int ryear, double price)
-        {
-            this.Country = country;
-            this.City = city;
-            this.Hotel = hotel;
-            this.Departure_Date = new DateTime(dyear, dmonth, dday);
-            this.Return_Date = new DateTime(ryear, rmonth, rday);
-            this.Price = price;
-        }
-
         public Tour_Info(string country, string city, string hotel, DateTime dep_date, DateTime ret_date, double price)
         {
             this.Country = country;
