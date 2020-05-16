@@ -45,8 +45,8 @@
   <ItemGroup>
     <Compile Include="BinaryFile.cs" />
     <Compile Include="ConsoleHelper.cs" />
+    <Compile Include="FileFabric.cs" />
     <Compile Include="IFileManager.cs" />
-    <Compile Include="FileProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seasons.cs" />

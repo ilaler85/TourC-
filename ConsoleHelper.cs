@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace Tour
 
         public static List<Tour_Info> InputData() // Выбор источника ввода и ввод данных
         {
-            Console.WriteLine("Выберите источник для ввода информации. 1 - консоль, 2 - текстовый файл, 3 - бинарный файл, 4 - XML файл");
+            Console.WriteLine("Выберите источник для ввода информации. 1 - консоль, 2 - файл");
             int response;
             int.TryParse(Console.ReadLine(), out response);
             switch (response)
@@ -32,14 +33,8 @@ namespace Tour
                 case 1:
                     return InputDataFromConsole();
                 case 2:
-                    IFileManager txtFile = new TxtFile();
-                    return txtFile.LoadFromFile();
-                case 3:
-                    IFileManager binFile = new BinaryFile();
-                    return binFile.LoadFromFile();
-                case 4:
-                    IFileManager xmlFile = new XmlFIle();
-                    return xmlFile.LoadFromFile();
+                    string name;
+                    return ChooseFile(out name).LoadFromFile(name);
                 default:
                     throw new Exception("Введены неверные данные");
             }
@@ -103,48 +98,33 @@ namespace Tour
 
         public static List<int> GetPeriod() //Получение листа месяцев давнного времени года
         {
+            List<int> list;
             switch (GetSeason())
             {
                 case Seasons.Зима:
-                    List<int> winterList = new List<int>() { 1, 2, 12 };
-                    return winterList;
+                    list = new List<int>() { 1, 2, 12 };
+                    break;
                 case Seasons.Весна:
-                    List<int> springList = new List<int>() { 3, 4, 5 };
-                    return springList;
+                    list = new List<int>() { 3, 4, 5 };
+                    break;
                 case Seasons.Лето:
-                    List<int> summerList = new List<int>() { 6, 7, 8 };
-                    return summerList;
+                    list = new List<int>() { 6, 7, 8 };
+                    break;
                 case Seasons.Осень:
-                    List<int> autumnList = new List<int>() { 9, 10, 11 };
-                    return autumnList;
+                    list = new List<int>() { 9, 10, 11 };
+                    break;
                 default:
                     throw new Exception("Введены неверные данные");
             }
+            return list;
         }
 
-        public static IFileManager GetFile() //выбор типа файла для вывода информации
+        public static IFileManager ChooseFile(out string fName) //выбор типа файла для вывода информации
         {
-            Console.WriteLine("Выберите тип файла? 1 - текстовый, 2 - бинарный, 3 - XML");
-            string response = Console.ReadLine();
-            if (response == "1")
-            {
-                IFileManager file = new TxtFile();
-                return file;
-            }
-
-            if (response == "2")
-            {
-                IFileManager file = new BinaryFile();
-                return file;
-            }
-
-            if (response == "3")
-            {
-                IFileManager file = new XmlFIle();
-                return file;
-            }
-            else
-                throw new Exception("Неверно введенные данные");
+            Console.WriteLine("Введите имя файла: ");
+            string responce = Console.ReadLine();
+            fName = responce;
+            return FileFabric.GetFile(Path.GetExtension(responce));
         }
     }
 }

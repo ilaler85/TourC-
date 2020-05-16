@@ -8,7 +8,7 @@ namespace Tour
 {
     public interface IFileManager
     {
-        void PrintToFile(List<Tour_Info> list);
-        List<Tour_Info> LoadFromFile();
+        void PrintToFile(List<Tour_Info> list, string fileName);
+        List<Tour_Info> LoadFromFile(string fileName);
     }
 }

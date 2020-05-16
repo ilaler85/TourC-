@@ -33,8 +33,9 @@ namespace Tour
                         ConsoleHelper.PrintToConsole(sortedList);
                         break;
                     case 3:
-                        IFileManager file = ConsoleHelper.GetFile();
-                        file.PrintToFile(list);
+                        string name;
+                        IFileManager file = ConsoleHelper.ChooseFile(out name);
+                        file.PrintToFile(list, name);
                         break;
                     case 4:
                         Console.ReadLine();

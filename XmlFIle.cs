@@ -10,18 +10,26 @@ namespace Tour
 {
     class XmlFIle : IFileManager
     {
-        public List<Tour_Info> LoadFromFile()
+        public List<Tour_Info> LoadFromFile(string fileName)
         {
-            using (XmlReader reader = XmlReader.Create("XmlInfo.xml"))
+            try
             {
-                XmlSerializer s = new XmlSerializer(typeof(List<Tour_Info>));
-                return (List<Tour_Info>)s.Deserialize(reader);
+                using (XmlReader reader = XmlReader.Create(fileName))
+                {
+                    XmlSerializer s = new XmlSerializer(typeof(List<Tour_Info>));
+                    return (List<Tour_Info>)s.Deserialize(reader);
+                }
+            }
+
+            catch
+            {
+                throw new Exception("Такого файла не существует или файл пустой");
             }
         }
 
-        public void PrintToFile(List<Tour_Info> list)
+        public void PrintToFile(List<Tour_Info> list, string fileName)
         {
-            using (XmlWriter writer = XmlWriter.Create("XmlInfo.xml"))
+            using (XmlWriter writer = XmlWriter.Create(fileName))
             {
                 XmlSerializer s = new XmlSerializer(typeof(List<Tour_Info>));
                 s.Serialize(writer, list);
