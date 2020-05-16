@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryFile.cs" />
+    <Compile Include="ConsoleHelper.cs" />
     <Compile Include="IFileManager.cs" />
     <Compile Include="FileProcessor.cs" />
     <Compile Include="Program.cs" />

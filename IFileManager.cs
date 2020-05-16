@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tour
 {
-    interface IFileManager
+    public interface IFileManager
     {
         void PrintToFile(List<Tour_Info> list);
         List<Tour_Info> LoadFromFile();
