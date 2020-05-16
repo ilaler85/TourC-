@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tour
 {
-    enum Seasons
+    public enum Seasons
     {
         Зима = 1,
         Весна,
