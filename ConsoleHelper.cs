@@ -124,7 +124,7 @@ namespace Tour
             Console.WriteLine("Введите имя файла: ");
             string responce = Console.ReadLine();
             fName = responce;
-            return FileFabric.GetFile(Path.GetExtension(responce));
+            return FileFactory.GetFile(Path.GetExtension(responce));
         }
     }
 }

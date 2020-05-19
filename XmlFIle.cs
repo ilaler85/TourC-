@@ -23,7 +23,7 @@ namespace Tour
 
             catch
             {
-                throw new Exception("Такого файла не существует или файл пустой");
+                throw new Exception("Такого файла не существует или файл пустой"); //жесткое исключение. Делал для проверки файла на существование, но для этого есть FileExists
             }
         }
 
@@ -35,7 +35,7 @@ namespace Tour
                 s.Serialize(writer, list);
                 writer.Close();
             }
-            Console.WriteLine("Запись выполнена");
+            Console.WriteLine("Запись выполнена");//обращения к консоли не должно быть отсюда
         }
     }
 }

@@ -10,25 +10,32 @@ namespace Tour
 {
     class BinaryFile : IFileManager
     {
-        public List<Tour_Info> LoadFromFile()
+        public List<Tour_Info> LoadFromFile(string fileName)
         {
-            //string path = @"C:\Users\vasil\source\repos\Tour\BinInfo.txt";
-            using (FileStream f = new FileStream("BinInfo.bin", FileMode.OpenOrCreate))
+            try
             {
-                BinaryFormatter bf = new BinaryFormatter();
-                return (List<Tour_Info>)bf.Deserialize(f);
+                using (FileStream f = new FileStream(fileName, FileMode.OpenOrCreate))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    return (List<Tour_Info>)bf.Deserialize(f);
+                }
+            }
+            
+            catch
+            {
+                throw new Exception("Такого файла не существует или файл пустой");//жесткое исключение. Делал для проверки файла на существование, но для этого есть FileExists
             }
         }
 
-        public void PrintToFile(List<Tour_Info> list)
+        public void PrintToFile(List<Tour_Info> list, string fileName)
         {
-            using (FileStream f = new FileStream("BinInfo.bin", FileMode.OpenOrCreate))
+            using (FileStream f = new FileStream(fileName, FileMode.OpenOrCreate))
             {
                 BinaryFormatter bf = new BinaryFormatter();
                 bf.Serialize(f, list);
                 f.Close();
             }
-            Console.WriteLine("Запись выполнена");
+            Console.WriteLine("Запись выполнена");//обращения к консоли не должно быть отсюда
         }
     }
 }

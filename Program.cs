@@ -63,7 +63,7 @@ namespace Tour
                                  .OrderBy(item => item.Price)
                                  .ThenBy(item => item.Departure_Date)
                                  .ThenBy(item => item.Return_Date.Subtract(item.Departure_Date))
-                                 .Cast<Tour_Info>().ToList();
+                                 .ToList();
             return sortedList;
         }
     }

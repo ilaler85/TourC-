@@ -22,7 +22,7 @@ namespace Tour
                         string country = sr?.ReadLine();
                         string city = sr?.ReadLine();
                         string hotel = sr?.ReadLine();
-                        DateTime dep_date = DateTime.Parse(sr?.ReadLine());
+                        DateTime dep_date = DateTime.Parse(sr?.ReadLine()); //сделать отдельную функцию ввода данных
                         DateTime ret_date = DateTime.Parse(sr?.ReadLine());
                         int price;
                         int.TryParse(sr?.ReadLine(), out price);
@@ -37,12 +37,12 @@ namespace Tour
 
             catch
             {
-                throw new Exception("Такого файла не существует");
+                throw new Exception("Такого файла не существует"); //жесткое исключение. Делал для проверки файла на существование, но для этого есть FileExists
             }
 
         }
 
-        public async void PrintToFile(List<Tour_Info> list, string fileName)
+        public void PrintToFile(List<Tour_Info> list, string fileName)
         {
             string writePath = @"C:\Users\vasil\source\repos\Tour\";
             try
@@ -51,17 +51,17 @@ namespace Tour
                 {
                     foreach(var item in list)
                     {
-                        await sw.WriteLineAsync(item.Country);
-                        await sw.WriteLineAsync(item.City);
-                        await sw.WriteLineAsync(item.Hotel);
-                        await sw.WriteLineAsync(item.Departure_Date.ToShortDateString().ToString());
-                        await sw.WriteLineAsync(item.Return_Date.ToShortDateString().ToString());
-                        await sw.WriteLineAsync(item.Price.ToString());
-                        await sw.WriteLineAsync();
+                        sw.WriteLine(item.Country);
+                        sw.WriteLine(item.City);
+                        sw.WriteLine(item.Hotel);
+                        sw.WriteLine(item.Departure_Date.ToShortDateString().ToString()); //сделать отдельную функцию вывода данных
+                        sw.WriteLine(item.Return_Date.ToShortDateString().ToString());
+                        sw.WriteLine(item.Price.ToString());
+                        sw.WriteLine();
                     }
                     sw.Close();
                 }
-                Console.WriteLine("Запись выполнена");
+                Console.WriteLine("Запись выполнена"); //обращения к консоли не должно быть отсюда
             }
             catch (Exception e)
             {
